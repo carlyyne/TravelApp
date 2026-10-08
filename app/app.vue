@@ -1,3 +1,15 @@
+<template>
+  <UApp>
+    <UMain>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </UMain>
+    <UFooter />
+  </UApp>
+</template>
+
+
 <!-- Test Auto Imports NUXT -->
 <!-- <script setup>
 const message = ref('Nuxt')
