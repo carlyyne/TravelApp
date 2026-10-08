@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const route = useRoute()
+const id = route.params.id
+</script>
+
 <template>
-<slot></slot>
+  <h1>Voyage numéro {{ id }}</h1>
 </template>
