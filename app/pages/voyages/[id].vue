@@ -1,8 +1,24 @@
 <script setup lang="ts">
 const route = useRoute()
-const id = route.params.id
+const { trips } = useTrips()
+
+const trip = computed(() =>
+  trips.value.find(t => t.id === route.params.id)
+)
+
+if (!trip.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Voyage introuvable',
+    fatal: true
+  })
+}
 </script>
 
 <template>
-  <h1>Voyage numéro {{ id }}</h1>
+  <div v-if="trip">
+    <h1>{{ trip.destination }}</h1>
+    <p>{{ trip.startDate }} → {{ trip.endDate }}</p>
+    <p>Logement : {{ trip.lodging || 'non renseigné' }}</p>
+  </div>
 </template>

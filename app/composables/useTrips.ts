@@ -18,7 +18,8 @@ export const useTrips = () => {
   ])
 
   function addTrip(data: Omit<Trip, 'id'>) {
-    const trip: Trip = { id: crypto.randomUUID(), ...data }
+    const id_trip = crypto.randomUUID()
+    const trip: Trip = { id: id_trip, ...data}
     trips.value.push(trip)
     return trip
   }
