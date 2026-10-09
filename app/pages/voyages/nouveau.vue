@@ -9,7 +9,8 @@ const { addTrip } = useTrips()
 // Champs texte
 const state = reactive({
   destination: '',
-  lodging: ''
+  lodging: '',
+  description: '',
 })
 
 // Intervalle de dates
@@ -37,8 +38,9 @@ function onSubmit() {
   const trip = addTrip({
     destination: state.destination,
     lodging: state.lodging,
+    description: state.description,
     startDate: start.toString(), // "2026-10-17"
-    endDate: end.toString()
+    endDate: end.toString(),
   })
 
   toast.add({ title: 'Voyage créé', color: 'success' })
@@ -48,47 +50,53 @@ function onSubmit() {
 </script>
 
 <template>
-    <h1 class="mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl">Mon prochain <span class="text-blue-700 italic">voyage</span></h1>
+    <div class="flex min-h-[calc(100vh-10rem)] flex-col items-center justify-center">
 
-    <UForm   
-    :state="state"
-    :validate="validate"
-    class="space-y-4 justify-self-center m-6 border rounded-lg p-4 border-gray-100 shadow-2xl" 
-    @submit="onSubmit"
-    >
+        <h1 class="mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl text-center">Mon prochain <span class="text-blue-700 italic">voyage</span></h1>
 
-        <UFormField label="Destination" name="destination">
-            <UInput v-model="state.destination" placeholder="Ville ou pays..." class="w-full"/>
-        </UFormField>
+        <UForm
+        :state="state"
+        :validate="validate"
+        class="mx-auto my-6 w-full max-w-lg space-y-4 rounded-lg border border-gray-100 p-4 shadow-[0_25px_250px_-25px_rgba(0,50,150,50)]"
+        @submit="onSubmit"
+        >
+            <UFormField label="Destination" name="destination">
+                <UInput v-model="state.destination" placeholder="Ville ou pays..." class="w-full"/>
+            </UFormField>
 
-        <UFormField label="Logement" name="lodging">
-            <UInput v-model="state.lodging" placeholder="Adresse ou nom de l'hébergement..." class="w-full" />
-        </UFormField>
+            <UFormField label="Logement" name="lodging">
+                <UInput v-model="state.lodging" placeholder="Adresse ou nom de l'hébergement..." class="w-full" />
+            </UFormField>
 
-        <UFormField label="Date de début - Date de fin">
-            <UInputDate ref="inputDate" v-model="modelValue" range>
-                <template #trailing>
-                    <UPopover :reference="inputDate?.inputsRef[0]?.$el">
-                    <UButton
-                        color="neutral"
-                        variant="link"
-                        size="sm"
-                        icon="i-lucide-calendar"
-                        aria-label="Select a date range"
-                        class="px-0"
-                    />
+            <UFormField label="Date de début - Date de fin">
+                <UInputDate ref="inputDate" v-model="modelValue" range>
+                    <template #trailing>
+                        <UPopover :reference="inputDate?.inputsRef[0]?.$el">
+                        <UButton
+                            color="neutral"
+                            variant="link"
+                            size="sm"
+                            icon="i-lucide-calendar"
+                            aria-label="Select a date range"
+                            class="px-0"
+                        />
 
-                    <template #content>
-                        <UCalendar v-model="modelValue" class="p-2" :number-of-months="2" range />
+                        <template #content>
+                            <UCalendar v-model="modelValue" class="p-2" :number-of-months="2" range />
+                        </template>
+                        </UPopover>
                     </template>
-                    </UPopover>
-                </template>
-            </UInputDate>
-        </UFormField>
+                </UInputDate>
+            </UFormField>
 
-        <UButton type="submit" class="bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-indigo-800">
-            Ajouter
-        </UButton>
+            <UFormField label="Description" name="description">
+                <UTextarea v-model="state.description" placeholder="Avec qui pars-tu ? Pour quelle occasion ? Dis-moi tout :)" class="w-full" />
+            </UFormField>
 
-    </UForm>
+            <UButton type="submit" class="bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:bg-indigo-800">
+                Ajouter
+            </UButton>
+
+        </UForm>
+    </div>
 </template>

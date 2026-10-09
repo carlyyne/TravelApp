@@ -4,6 +4,7 @@ export interface Trip {
   startDate: string
   endDate: string
   lodging: string
+  description: string
 }
 
 export const useTrips = () => {
@@ -13,7 +14,8 @@ export const useTrips = () => {
       destination: 'Bruxelles',
       startDate: '2026-10-17',
       endDate: '2026-10-24',
-      lodging: 'Appartement centre-ville'
+      lodging: 'Appartement centre-ville',
+      description: 'Vacances de la Toussaint avec Maman et Papa :)',
     }
   ])
 

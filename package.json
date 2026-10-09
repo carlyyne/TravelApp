@@ -29,6 +29,8 @@
     "@tiptap/starter-kit": "^3.31.4",
     "@tiptap/suggestion": "^3.31.4",
     "@tiptap/vue-3": "^3.31.4",
+    "daisyui": "^5.7.47",
+    "flowbite": "^4.0.2",
     "nuxt": "^4.6.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",

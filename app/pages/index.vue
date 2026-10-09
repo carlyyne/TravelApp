@@ -1,3 +1,7 @@
 <template>
-    <h1 class="mb-4 text-4xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl">Prêt à <span class="text-blue-700 italic">voyager</span> ?</h1>
+  <div class="flex min-h-[calc(100vh-10rem)] items-center justify-center">
+    <h1 class="text-center text-8xl font-bold tracking-tight lg:text-9xl">
+      Prêt à <span class="text-blue-700 italic">voyager</span> ?
+    </h1>
+  </div>
 </template>
