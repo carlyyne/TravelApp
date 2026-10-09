@@ -9,6 +9,7 @@ const { trips } = useTrips()
             <li v-for="trip in trips" :key="trip.id">
                 <NuxtLink :to="`/voyages/${trip.id}`">
                 {{ trip.destination }} ({{ trip.startDate }} → {{ trip.endDate }})
+                {{ getTripDays(trip.startDate, trip.endDate) }}
                 </NuxtLink>
              </li>
         </ul>
