@@ -57,7 +57,7 @@ function onSubmit() {
         <UForm
         :state="state"
         :validate="validate"
-        class="mx-auto my-6 w-full max-w-lg space-y-4 rounded-lg border border-gray-100 p-4 shadow-[0_25px_250px_-25px_rgba(0,50,150,50)]"
+        class="mx-auto my-6 w-full max-w-lg space-y-4 rounded-2xl border border-gray-100 p-4 shadow-[0_25px_250px_-25px_rgba(0,50,150,50)]"
         @submit="onSubmit"
         >
             <UFormField label="Destination" name="destination">

@@ -26,5 +26,9 @@ export const useTrips = () => {
     return trip
   }
 
-  return { trips, addTrip }
+  function removeTrip(id: string) {
+    trips.value = trips.value.filter(t => t.id !== id)
+  }
+
+  return { trips, addTrip, removeTrip }
 }
